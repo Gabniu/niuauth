@@ -87,13 +87,15 @@ transport is configured and exercised end to end.
 
 ## Federation and consumer readiness
 
-- [ ] Deploy the exact-origin Better Auth CORS response for the approved
+- [x] Deploy the exact-origin Better Auth CORS response for the approved
   Booking consumer (`https://booking.niuautomations.com`). The consumer's
   browser may call only the email/password/session endpoints with credentials;
   no wildcard origins or credential proxying are permitted. The route wrapper
   and exact-origin contract tests are present in `src/lib/auth-cors.ts` and
-  `src/lib/auth-cors.test.ts`; production deployment and browser acceptance
-  remain open.
+  `src/lib/auth-cors.test.ts`; revision `9c479a4` is live and the public
+  preflight returns the exact Booking origin with credentials enabled. A real
+  successful password/TOTP or SSO callback remains a consumer-side acceptance
+  step and must be completed with an authorized account.
 
 - [x] Add the reviewed POS OIDC/JWKS verifier boundary. It enforces issuer,
   audience, EdDSA/Ed25519 allow-list, signature, expiry, clock tolerance,
